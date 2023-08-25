@@ -8,8 +8,7 @@ class RemoteRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
-      // rengini ve yuvarlama ayarlarsın
+      width: 350,
       decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(30)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

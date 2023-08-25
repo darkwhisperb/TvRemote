@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:untitled/WebSocketSingleton.dart';
 import 'package:untitled/main.dart';
@@ -20,7 +19,7 @@ class QRScanner extends StatefulWidget {
 class _QRScannerState extends State<QRScanner> {
 
    bool isScanCompleted = false;
-   late SharedPreferences _prefs; // SharedPreferences nesnesi
+   late SharedPreferences _prefs; // SharedPreferences
 
    void closeScreen(){
      isScanCompleted= false;
@@ -35,7 +34,6 @@ class _QRScannerState extends State<QRScanner> {
      _prefs = await SharedPreferences.getInstance();
    }
 
-   // ... Diğer widget oluşturma kodları ...
 
    void _saveIpAddress(String ipAddress) {
      _prefs.setString('ipAddress', ipAddress); // IP adresini kaydetme
@@ -101,10 +99,11 @@ class _QRScannerState extends State<QRScanner> {
                 // allowDuplicates: true,
                     onDetect: (barcode) {
                       if (!isScanCompleted){
-                        String code = barcode.barcodes.last.rawValue ?? 'glglgjkhkjhuıhlkjhl';
+                        String code = barcode.barcodes.last.rawValue ?? '';
                         isScanCompleted= true;
 
                         if (WebSocketSingleton.getInstance().connectToWebSocket(code)) {
+                          _saveIpAddress(code);
                           Navigator.push(context, MaterialPageRoute(builder: (context) => TVRemoteScreen()));
                         }
                       }

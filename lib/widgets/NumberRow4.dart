@@ -8,13 +8,15 @@ class NumberRow4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-    String keyboardInputValue = "";
+
+    TextEditingController keyboardInputController = TextEditingController();
+    String lastKeyboardValue = "";
+
     return Container(
      child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height:10),
-            SizedBox(width: 10),
+          SizedBox(height:50),
             IconButton(
               onPressed: () {
                 WebSocketSingleton.getInstance().sendMessage("MENU");
@@ -26,7 +28,7 @@ class NumberRow4 extends StatelessWidget {
               splashRadius: 30,
 
             ),
-            SizedBox(width: 10),
+            SizedBox(width: 55),
             OutlinedButton(
               onPressed: () {
                 WebSocketSingleton.getInstance().sendMessage("0");
@@ -45,30 +47,40 @@ class NumberRow4 extends StatelessWidget {
               ),
               child: Text('0', style: TextStyle(fontWeight: FontWeight.w600)),
             ),
-            SizedBox(width: 10),
+            SizedBox(width: 55),
             IconButton(
               onPressed: () {
-                // openDialog fonksiyonunu çağırıp AlertDialog'u gösterin
+                keyboardInputController.text = lastKeyboardValue;
+
                 showDialog(
                   context: context,
                   builder: (context) =>
                       AlertDialog(
-                        title: Text('Arama'),
+                        title: Text('Please enter a text:'),
                         content: TextField(
                           autofocus: true,
-                          onChanged: (newText) {
-                            keyboardInputValue = newText;
-                          },
+                          controller: keyboardInputController,
                           decoration: InputDecoration(
-                              hintText: 'Aramanızı giriniz.'),
+                              hintText: 'Text'),
                         ),
                         actions: [
                           TextButton(
                             onPressed: () {
-                              WebSocketSingleton.getInstance().sendMessage(
-                                  "TEXT: " + keyboardInputValue);
+                              Navigator.pop(context);
                             },
-                            child: Text('Giriş'),
+                            child: Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              lastKeyboardValue = keyboardInputController.text;
+
+                              Navigator.pop(context);
+
+                              WebSocketSingleton.getInstance().sendMessage(
+                                  "TEXT: ${keyboardInputController.text}");
+
+                            },
+                            child: Text('Enter'),
                           ),
                         ],
                       ),

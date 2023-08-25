@@ -14,7 +14,7 @@ class NumberRow2 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
-              SizedBox(width: 10,height:50),
+              SizedBox(height:50),
               OutlinedButton(
                 onPressed: () {
                   WebSocketSingleton.getInstance().sendMessage("4");
@@ -30,7 +30,7 @@ class NumberRow2 extends StatelessWidget {
                 ),
                 child: Text('4',style:TextStyle(fontWeight: FontWeight.w600) ),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 50),
               OutlinedButton(
                 onPressed: () {
                   WebSocketSingleton.getInstance().sendMessage("5");
@@ -46,7 +46,7 @@ class NumberRow2 extends StatelessWidget {
                 ),
                 child: Text('5', style: TextStyle(fontWeight: FontWeight.w600)),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 50),
               OutlinedButton(
                 onPressed: () {
                   WebSocketSingleton.getInstance().sendMessage("6");

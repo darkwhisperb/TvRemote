@@ -9,7 +9,8 @@ class VolWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Container(
         height: 110,
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20),
+        width: 50,
+        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(30),
             shape: BoxShape.rectangle,
             boxShadow: [
             BoxShadow(

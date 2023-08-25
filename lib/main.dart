@@ -10,17 +10,14 @@ import 'package:untitled/widgets/RemoteRow.dart';
 import 'package:untitled/widgets/qr/qr_scanner.dart';
 import 'package:untitled/widgets/VolWidget.dart';
 import 'package:untitled/widgets/TvRow.dart';
+import 'package:untitled/widgets/SplashScreen.dart';
 import 'package:untitled/WebSocketSingleton.dart';
 import 'package:alert_dialog/alert_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 Future main() async {
   runApp(const TVRemoteApp());
-  await Future.delayed(const Duration(seconds: 5));
-  FlutterNativeSplash.remove();
 }
-
 
 class TVRemoteApp extends StatelessWidget {
   const TVRemoteApp({super.key});
@@ -28,10 +25,11 @@ class TVRemoteApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TV Remote App',
+      title: 'TV Remote',
       debugShowCheckedModeBanner: false,
       //home: TVRemoteScreen(),
       home: QRScanner()
+      //home: SplashScreen(),
     );
   }
 }
@@ -39,9 +37,10 @@ class TVRemoteScreen extends StatelessWidget {
   String keyboardInputValue = "";
   @override
   Widget build(BuildContext context) {
-    return ScaffoldGradientBackground(gradient: LinearGradient(
+    return ScaffoldGradientBackground(
+      gradient: LinearGradient(
       begin: Alignment.bottomLeft,
-     end: Alignment.topRight,
+      end: Alignment.topRight,
       colors: [
         Color(0xFF05092C),
         Color(0xFF3E1783),
@@ -75,7 +74,7 @@ class TVRemoteScreen extends StatelessWidget {
          ),
        ],
      ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -86,6 +85,7 @@ class TVRemoteScreen extends StatelessWidget {
                 Expanded(
                   child: Column(
                   children: [
+                    SizedBox(height:20),
                     NumberRow1(),
                     SizedBox(height:10),
                     NumberRow2(),

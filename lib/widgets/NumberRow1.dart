@@ -10,11 +10,10 @@ import 'package:untitled/WebSocketSingleton.dart';
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height:10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(width: 10,height:50),
+              SizedBox(height:50),
               OutlinedButton(
                 onPressed: () {
                   WebSocketSingleton.getInstance().sendMessage("1");
@@ -30,7 +29,7 @@ import 'package:untitled/WebSocketSingleton.dart';
                 ),
                 child: Text("1",style:TextStyle(fontWeight: FontWeight.w600) ),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 50),
               OutlinedButton(
                 onPressed: () {
                   WebSocketSingleton.getInstance().sendMessage("2");
@@ -46,7 +45,7 @@ import 'package:untitled/WebSocketSingleton.dart';
                 ),
                 child: Text('2',style:TextStyle(fontWeight: FontWeight.w600) ),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 50),
               OutlinedButton(
                 onPressed: () {
                   WebSocketSingleton.getInstance().sendMessage("3");

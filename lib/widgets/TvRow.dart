@@ -8,8 +8,7 @@ class TvRow extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return Container(
-        width: 200,
-        // rengini ve yuvarlama ayarlarsın
+        width: 300,
         decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(30) ),
     child: Row(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -21,7 +20,7 @@ class TvRow extends StatelessWidget {
               icon: Icon(Icons.home_outlined),
               iconSize: 30,
             ),
-
+            SizedBox(width:10),
             IconButton(
               onPressed: () {
                 WebSocketSingleton.getInstance().sendMessage("INPUT");
@@ -29,6 +28,7 @@ class TvRow extends StatelessWidget {
               icon: Icon(Icons.exit_to_app),
               iconSize: 30,
             ),
+          SizedBox(width:10),
             IconButton(
               onPressed: () {
                 WebSocketSingleton.getInstance().sendMessage("BACK");
@@ -36,7 +36,7 @@ class TvRow extends StatelessWidget {
               icon: Image.asset('assets/images/backnn.png'),
               iconSize: 28,
             ),
-
+            SizedBox(width:10),
             IconButton(
               onPressed: () {
                 WebSocketSingleton.getInstance().sendMessage("MUTE");
